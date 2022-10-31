@@ -99,23 +99,56 @@ class ViewController: UIViewController {
 
 
     
-    
-    
-    
-    
-    
-    
-    
     var fullset = Array<UILabel>()
     
-    var words = ["Hello","Omar"];
+    //pokimon names btw
+    var words = ["GLOOM","ZUBAT" , "EEVEE"];
     var selection = ["","","","",""]
     var Head = 0;
     var offset = 0;
+    var letters:[String : UIButton] = [:]
+   // var cindex :Int
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //cindex = Int.random(in:0..<words.count);
+       // cindex = 0;
+        //Dictionary to link UIButtons to their letters
+
+        letters["Q"] = KQ;
+        letters["W"] = KW;
+        letters["E"] = KE;
+        letters["R"] = KR;
+        letters["T"] = KT;
+        letters["Y"] = KY;
+        letters["U"] = KU;
+        letters["I"] = KI;
+        letters["O"] = KO;
+        letters["P"] = KP;
+        
+        letters["A"] = KA;
+        letters["S"] = KS;
+        letters["D"] = KD;
+        letters["F"] = KF;
+        letters["G"] = KG;
+        letters["H"] = KH;
+        letters["J"] = KJ;
+        letters["K"] = KK;
+        letters["L"] = KL;
+        
+        letters["Z"] = KA;
+        letters["X"] = KS;
+        letters["C"] = KD;
+        letters["V"] = KF;
+        letters["B"] = KG;
+        letters["N"] = KH;
+        letters["M"] = KJ;
+
+        
+        
+        
 //adding all UILabels to a single set
         fullset.append(A)
         fullset.append(B)
@@ -157,8 +190,7 @@ class ViewController: UIViewController {
         
         
         
-        E.layer.borderWidth = 5.0
-        E.layer.borderColor = UIColor.darkGray.cgColor
+
 
     }
 
@@ -166,40 +198,83 @@ class ViewController: UIViewController {
     @IBAction func delfunc(_ sender: Any) {
         
         fullset[Head+offset].text = "";
+        
         Head -= 1
+        makebtnavailable()
+
+        
         
     }
     @IBAction func submit_word(_ sender: Any) {
+
+        Head = 0
+        validateLetters()
         increaseOffset()
         submit.isEnabled = false
-        Head = 0
     }
     
     
     
     func addKey (_ key:String){
 
+        
+        
+        fullset[Head+offset].text = key;
         Head += 1
+        makebtnavailable()
+    }
+    
+    func makebtnavailable() {
+        if(Head < 0){
+            Head = 0;
+        }
         if(Head<4){
             submit.isEnabled = false
-        }
-        if(Head == 5){
-            submit.isEnabled = true
         }
         
         if(Head > 4)
         {
             Head = 4;
+            submit.isEnabled = true
         }
-        fullset[Head+offset].text = String (Head);
-        
-        
     }
     
     func increaseOffset () {
-        if(offset != 25){
+        if(offset < 25){
             offset += 5
         }
+    }
+    
+    func validateLetters(){
+        theTitle.text? = "" ;
+            var FinalWord = "";
+        for I in 0 ... 4 {
+           
+                FinalWord += fullset[Head+I+offset].text ?? ""
+            
+            var A = fullset[Head+I+offset].text ?? "00000" ;
+            //var B = Array(words[cindex])
+            //theTitle.text? += "\(I)" ;
+            var B = Array(words[0])[I]
+            
+            theTitle.text? += "\(B):\(A)" ;
+            if(A == "\(B)"){
+                //we Have a Match
+                fullset[Head+I+offset].backgroundColor = UIColor.cyan ;
+                letters["\(B)"]?.tintColor = UIColor.cyan ;
+            }
+            
+            
+            
+            }
+            
+        
+        
+        
+        
+        
+        
+        
     }
     
     
