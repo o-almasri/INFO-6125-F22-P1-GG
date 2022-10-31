@@ -56,22 +56,48 @@ class ViewController: UIViewController {
     @IBOutlet weak var theTitle: UILabel!
     
     //Buttons
-    @IBOutlet var submit: UIView!
+    
+    @IBOutlet weak var submit: UIButton!
     @IBOutlet weak var del: UIButton!
     
    
     //keyboard
     
+    //first row
+    @IBOutlet weak var KQ: UIButton!
+    @IBOutlet weak var KW: UIButton!
+    @IBOutlet weak var KE: UIButton!
+    @IBOutlet weak var KR: UIButton!
+    @IBOutlet weak var KT: UIButton!
+    @IBOutlet weak var KY: UIButton!
+    @IBOutlet weak var KU: UIButton!
+    @IBOutlet weak var KI: UIButton!
+    @IBOutlet weak var KO: UIButton!
+   @IBOutlet weak var KP: UIButton!
     
     
+    //second Row
+    @IBOutlet weak var KA: UIButton!
+    @IBOutlet weak var KS: UIButton!
+    @IBOutlet weak var KD: UIButton!
+    @IBOutlet weak var KF: UIButton!
+    @IBOutlet weak var KG: UIButton!
+    @IBOutlet weak var KH: UIButton!
+    @IBOutlet weak var KJ: UIButton!
+    @IBOutlet weak var KK: UIButton!
+    @IBOutlet weak var KL: UIButton!
+
     
-    
-    
-    
-    
-    
-    
-    
+    //third Row
+    @IBOutlet weak var KZ: UIButton!
+    @IBOutlet weak var KX: UIButton!
+    @IBOutlet weak var KC: UIButton!
+    @IBOutlet weak var KV: UIButton!
+    @IBOutlet weak var KB: UIButton!
+    @IBOutlet weak var KN: UIButton!
+    @IBOutlet weak var KM: UIButton!
+
+
     
     
     
@@ -138,26 +164,34 @@ class ViewController: UIViewController {
 
    
     @IBAction func delfunc(_ sender: Any) {
-        increaseOffset()
-        Head = 0
+        
+        fullset[Head+offset].text = "";
+        Head -= 1
+        
     }
     @IBAction func submit_word(_ sender: Any) {
-        
-        addKey("H")
+        increaseOffset()
+        submit.isEnabled = false
+        Head = 0
     }
     
     
     
     func addKey (_ key:String){
-        
-        fullset[Head+offset].text = key;
-        
-        
+
         Head += 1
-        if(Head>4){
-            Head = 0;
-            
+        if(Head<4){
+            submit.isEnabled = false
         }
+        if(Head == 5){
+            submit.isEnabled = true
+        }
+        
+        if(Head > 4)
+        {
+            Head = 4;
+        }
+        fullset[Head+offset].text = String (Head);
         
         
     }
@@ -166,13 +200,104 @@ class ViewController: UIViewController {
         if(offset != 25){
             offset += 5
         }
-        
-        
     }
     
     
     
-    //ibAction for keyboard
+    //ibAction For keyboard
+    
+    @IBAction func KQ(_ sender: UIButton) {
+        addKey("Q")
+    }
+    @IBAction func KW(_ sender: UIButton) {
+        addKey("W")
+    }
+    @IBAction func KE(_ sender: UIButton) {
+        addKey("E")
+    }
+    @IBAction func KR(_ sender: UIButton) {
+        addKey("R")
+    }
+    @IBAction func KT(_ sender: UIButton) {
+        addKey("T")
+    }
+    @IBAction func KY(_ sender: UIButton) {
+        addKey("Y")
+    }
+    @IBAction func KU(_ sender: UIButton) {
+        addKey("U")
+    }
+    @IBAction func KI(_ sender: UIButton) {
+        addKey("I")
+    }
+    @IBAction func KO(_ sender: UIButton) {
+        addKey("O")
+    }
+    @IBAction func KP(_ sender: UIButton) {
+        addKey("P")
+    }
+    
+    
+    
+    @IBAction func KA(_ sender: UIButton) {
+        addKey("A")
+    }
+    @IBAction func KS(_ sender: UIButton) {
+        addKey("S")
+    }
+    @IBAction func KD(_ sender: UIButton) {
+        addKey("D")
+    }
+    @IBAction func KF(_ sender: UIButton) {
+        addKey("F")
+    }
+    @IBAction func KG(_ sender: UIButton) {
+        addKey("G")
+    }
+    @IBAction func KH(_ sender: UIButton) {
+        addKey("H")
+    }
+    @IBAction func KJ(_ sender: UIButton) {
+        addKey("J")
+    }
+    @IBAction func KK(_ sender: UIButton) {
+        addKey("K")
+    }
+    @IBAction func KL(_ sender: UIButton) {
+        addKey("L")
+    }
+    
+    
+    @IBAction func KZ(_ sender: UIButton) {
+        addKey("Z")
+    }
+    @IBAction func KX(_ sender: UIButton) {
+        addKey("X")
+    }
+    @IBAction func KC(_ sender: UIButton) {
+        addKey("C")
+    }
+    @IBAction func KV(_ sender: UIButton) {
+        addKey("V")
+    }
+    @IBAction func KB(_ sender: UIButton) {
+        addKey("B")
+    }
+    @IBAction func KN(_ sender: UIButton) {
+        addKey("N")
+    }
+    @IBAction func KM(_ sender: UIButton) {
+        addKey("M")
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
