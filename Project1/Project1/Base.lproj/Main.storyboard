@@ -852,6 +852,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="delfunc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gLJ-hl-IDm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="TSj-b3-zz7">
                                         <rect key="frame" x="272" y="122" width="36" height="55"/>
@@ -1125,7 +1128,9 @@
                         <outlet property="E3" destination="nMb-d0-5bJ" id="wb0-Z0-j2T"/>
                         <outlet property="E4" destination="BiP-CH-exS" id="UzR-Dp-F2C"/>
                         <outlet property="E5" destination="3C5-VD-zun" id="fAz-Vo-cVP"/>
+                        <outlet property="del" destination="R2M-6J-XDX" id="ikT-Cb-kSa"/>
                         <outlet property="submit" destination="8bC-Xf-vdC" id="ilU-BG-cYs"/>
+                        <outlet property="theTitle" destination="9UQ-8q-E0b" id="ZqS-r9-eZk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

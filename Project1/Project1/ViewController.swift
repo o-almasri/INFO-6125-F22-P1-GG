@@ -53,18 +53,39 @@ class ViewController: UIViewController {
     @IBOutlet weak var D5: UILabel!
     @IBOutlet weak var E5: UILabel!
     
+    @IBOutlet weak var theTitle: UILabel!
+    
     //Buttons
-    
     @IBOutlet var submit: UIView!
-    
+    @IBOutlet weak var del: UIButton!
     
    
+    //keyboard
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     var fullset = Array<UILabel>()
     
     var words = ["Hello","Omar"];
-    
+    var selection = ["","","","",""]
+    var Head = 0;
+    var offset = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,14 +134,49 @@ class ViewController: UIViewController {
         E.layer.borderWidth = 5.0
         E.layer.borderColor = UIColor.darkGray.cgColor
 
-        
-        
     }
 
    
+    @IBAction func delfunc(_ sender: Any) {
+        increaseOffset()
+        Head = 0
+    }
     @IBAction func submit_word(_ sender: Any) {
         
+        addKey("H")
     }
+    
+    
+    
+    func addKey (_ key:String){
+        
+        fullset[Head+offset].text = key;
+        
+        
+        Head += 1
+        if(Head>4){
+            Head = 0;
+            
+        }
+        
+        
+    }
+    
+    func increaseOffset () {
+        if(offset != 25){
+            offset += 5
+        }
+        
+        
+    }
+    
+    
+    
+    //ibAction for keyboard
+    
+    
+    
+    
     
 }
 
