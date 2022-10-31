@@ -102,7 +102,8 @@ class ViewController: UIViewController {
     var fullset = Array<UILabel>()
     
     //pokimon names btw
-    var words = ["GLOOM","ZUBAT" , "EEVEE"];
+    let words = ["GLOOM","ZUBAT" ,"EEVEE"];
+    
     var selection = ["","","","",""]
     var Head = 0;
     var offset = 0;
@@ -189,8 +190,10 @@ class ViewController: UIViewController {
         }
         
         
-        
-
+        fullset[Head+offset].layer.borderColor = UIColor.green.cgColor
+        submit.isEnabled = false
+        submit.backgroundColor = UIColor.lightGray ;
+        submit.alpha = 0.5;
 
     }
 
@@ -198,20 +201,27 @@ class ViewController: UIViewController {
     @IBAction func delfunc(_ sender: Any) {
         
         fullset[Head+offset].text = "";
-        
+        fullset[Head+offset].layer.borderColor = UIColor.darkGray.cgColor
         Head -= 1
+        if(Head<0){
+            Head = 0;
+        }
+        fullset[Head+offset].layer.borderColor = UIColor.green.cgColor
         makebtnavailable()
 
+        
+        
         
         
     }
     @IBAction func submit_word(_ sender: Any) {
 
         
-        
+        fullset[Head+offset].layer.borderColor = UIColor.darkGray.cgColor
         Head = 0
         validateLetters()
         increaseOffset()
+        fullset[Head+offset].layer.borderColor = UIColor.green.cgColor
         submit.isEnabled = false
         
         
@@ -225,8 +235,12 @@ class ViewController: UIViewController {
         
         
         fullset[Head+offset].text = key;
+        fullset[Head+offset].layer.borderColor = UIColor.darkGray.cgColor
         Head += 1
+
         makebtnavailable()
+        fullset[Head+offset].layer.borderColor = UIColor.green.cgColor
+        
     }
     
     func makebtnavailable() {
@@ -235,28 +249,87 @@ class ViewController: UIViewController {
         }
         if(Head<4){
             submit.isEnabled = false
+            submit.backgroundColor = UIColor.lightGray ;
+            submit.alpha = 0.5;
         }
         
-        if(Head > 4)
+        
+        if(Head == 5){
+            submit.isEnabled = true
+            submit.backgroundColor = UIColor.darkGray ;
+            submit.alpha = 1.0;
+        }
+        
+        if(Head >= 4)
         {
             Head = 4;
-            submit.isEnabled = true
         }
     }
     
     func increaseOffset () {
         if(offset < 25){
             offset += 5
+            makebtnavailable()
+        }else {
+            
+            // player have used all what he have
+            let alert = UIAlertController(title: "Unlucky", message: "Hidden word was \(words[cindex])", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Play Again!", style: .default, handler: { action in
+                switch action.style{
+                    case .default:
+                    
+                    //Reset Letters
+                    self.reset()
+                    //Reset Keyboard
+                    //Choose New Word
+                    
+                    case .cancel:
+                    print("cancel")
+                    
+                    case .destructive:
+                    print("destructive")
+                    
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
         }
+        
+        
+    }
+    
+    func reset(){
+        
+        //reset pointer color
+        fullset[Head+offset].layer.borderColor = UIColor.darkGray.cgColor
+        //reset letters
+        
+        for x in fullset {
+            x.text = "";
+            x.layer.borderWidth = 5.0
+            x.backgroundColor = UIColor.white
+        }
+        
+        //reset Keyboard
+        
+        for(key , value) in letters{
+            value.backgroundColor = UIColor.darkGray;
+        }
+        cindex = Int.random(in:0..<words.count);
+        Head = 0
+        offset = 0;
+        submit.isEnabled = false
+        fullset[Head+offset].layer.borderColor = UIColor.green.cgColor
+        
     }
     
     func validateLetters(){
-        theTitle.text? = "" ;
+        //theTitle.text? = "" ;
         var FinalWord = "";
         var word = words[cindex];
         for I in 0 ... 4 {
            
-            FinalWord += fullset[Head+I+offset].text ?? ""
+            
             
             //letters from Blocks
             var A = fullset[Head+I+offset].text ?? "00000" ;
@@ -283,15 +356,37 @@ class ViewController: UIViewController {
                 word.remove(at: ltr);
                 word.insert("(", at: ltr);
                 
-                theTitle.text? = "\(word)" ;
+                
                 
             }else{
                 //its not found color it to grey
                 fullset[Head+I+offset].backgroundColor = UIColor.gray ;
             }
 
+            
+            
             if(word == "((((("){
-                theTitle.text? = "YOU WON CONGRATS" ;
+               // theTitle.text? = "\(words[cindex])" ;
+                
+                let alert = UIAlertController(title: "Congratz", message: "You Found the Hidden Word", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Play Again!", style: .default, handler: { action in
+                    switch action.style{
+                        case .default:
+                        
+                        //Reset Letters
+                        self.reset()
+                        //Reset Keyboard
+                        //Choose New Word
+                        
+                        case .cancel:
+                        print("cancel")
+                        
+                        case .destructive:
+                        print("destructive")
+                        
+                    }
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
             
             }
