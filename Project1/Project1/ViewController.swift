@@ -107,13 +107,13 @@ class ViewController: UIViewController {
     var Head = 0;
     var offset = 0;
     var letters:[String : UIButton] = [:]
-   // var cindex :Int
+    var cindex :Int = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //cindex = Int.random(in:0..<words.count);
+        cindex = Int.random(in:0..<words.count);
        // cindex = 0;
         //Dictionary to link UIButtons to their letters
 
@@ -138,13 +138,13 @@ class ViewController: UIViewController {
         letters["K"] = KK;
         letters["L"] = KL;
         
-        letters["Z"] = KA;
-        letters["X"] = KS;
-        letters["C"] = KD;
-        letters["V"] = KF;
-        letters["B"] = KG;
-        letters["N"] = KH;
-        letters["M"] = KJ;
+        letters["Z"] = KZ;
+        letters["X"] = KX;
+        letters["C"] = KC;
+        letters["V"] = KV;
+        letters["B"] = KB;
+        letters["N"] = KN;
+        letters["M"] = KM;
 
         
         
@@ -207,10 +207,15 @@ class ViewController: UIViewController {
     }
     @IBAction func submit_word(_ sender: Any) {
 
+        
+        
         Head = 0
         validateLetters()
         increaseOffset()
         submit.isEnabled = false
+        
+        
+
     }
     
     
@@ -247,24 +252,47 @@ class ViewController: UIViewController {
     
     func validateLetters(){
         theTitle.text? = "" ;
-            var FinalWord = "";
+        var FinalWord = "";
+        var word = words[cindex];
         for I in 0 ... 4 {
            
-                FinalWord += fullset[Head+I+offset].text ?? ""
+            FinalWord += fullset[Head+I+offset].text ?? ""
             
+            //letters from Blocks
             var A = fullset[Head+I+offset].text ?? "00000" ;
-            //var B = Array(words[cindex])
-            //theTitle.text? += "\(I)" ;
-            var B = Array(words[0])[I]
             
-            theTitle.text? += "\(B):\(A)" ;
+            //Letters From the Word
+            var B = Array(word)[I]
+            
+            
             if(A == "\(B)"){
                 //we Have a Match
                 fullset[Head+I+offset].backgroundColor = UIColor.cyan ;
-                letters["\(B)"]?.tintColor = UIColor.cyan ;
+                letters["\(B)"]?.backgroundColor = UIColor.cyan ;
+                
+                var ltr = word.firstIndex(of: Character(A)) ?? word.startIndex
+                word.remove(at: ltr);
+                word.insert("(", at: ltr);
+                
+            }else if(word.contains("\(A)")){
+                
+                fullset[Head+I+offset].backgroundColor = UIColor.orange ;
+                letters["\(B)"]?.backgroundColor = UIColor.orange ;
+                
+                var ltr = word.firstIndex(of: Character(A)) ?? word.startIndex
+                word.remove(at: ltr);
+                word.insert("(", at: ltr);
+                
+                theTitle.text? = "\(word)" ;
+                
+            }else{
+                //its not found color it to grey
+                fullset[Head+I+offset].backgroundColor = UIColor.gray ;
             }
-            
-            
+
+            if(word == "((((("){
+                theTitle.text? = "YOU WON CONGRATS" ;
+            }
             
             }
             
