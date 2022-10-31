@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUW-9w-xcR" userLabel="upperView">
-                                <rect key="frame" x="0.0" y="47" width="350.33333333333331" height="537"/>
+                                <rect key="frame" x="0.0" y="47" width="375" height="517"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6uX-Ku-HfQ" userLabel="letters View">
                                         <rect key="frame" x="0.0" y="45" width="374" height="484"/>
@@ -412,7 +412,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Wordle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-8q-E0b">
-                                        <rect key="frame" x="124" y="0.0" width="143" height="39"/>
+                                        <rect key="frame" x="123.99999999999999" y="0.0" width="167.66666666666663" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="LQC-QM-xHq"/>
                                         </constraints>
@@ -423,9 +423,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="9UQ-8q-E0b" firstAttribute="top" secondItem="BUW-9w-xcR" secondAttribute="top" id="3Zf-cA-SCE"/>
-                                    <constraint firstAttribute="width" constant="390.32999999999998" id="79h-G3-xH4"/>
-                                    <constraint firstAttribute="trailing" secondItem="6uX-Ku-HfQ" secondAttribute="trailing" id="7Ly-LN-nyb"/>
-                                    <constraint firstAttribute="height" constant="537" id="8FQ-LO-P5y"/>
+                                    <constraint firstAttribute="height" constant="517" id="8FQ-LO-P5y"/>
                                     <constraint firstItem="9UQ-8q-E0b" firstAttribute="leading" secondItem="BUW-9w-xcR" secondAttribute="leading" constant="124" id="EOU-8q-BgG"/>
                                     <constraint firstItem="6uX-Ku-HfQ" firstAttribute="top" secondItem="9UQ-8q-E0b" secondAttribute="bottom" constant="6" id="HOL-ne-544"/>
                                     <constraint firstAttribute="trailing" secondItem="9UQ-8q-E0b" secondAttribute="trailing" constant="83.329999999999998" id="f4b-NO-SUg"/>
@@ -433,7 +431,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLY-Qr-LgL" userLabel="KeyboardView">
-                                <rect key="frame" x="0.0" y="584" width="350.33333333333331" height="194"/>
+                                <rect key="frame" x="0.0" y="564" width="358" height="222"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WrT-Zk-IqS">
                                         <rect key="frame" x="6" y="8" width="36" height="55"/>
@@ -1003,7 +1001,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hTv-4l-oN4">
-                                        <rect key="frame" x="8" y="185" width="336.33333333333331" height="37"/>
+                                        <rect key="frame" x="8" y="185" width="344" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="GUn-FH-H3K"/>
                                             <constraint firstAttribute="height" constant="37" id="elb-RM-cdv"/>
@@ -1015,6 +1013,9 @@
                                             </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" name="Apple-Chancery" family="Apple Chancery" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="submit_word:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YWb-MH-kN0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1068,7 +1069,7 @@
                                     <constraint firstItem="Q8A-GB-WZO" firstAttribute="top" secondItem="0eO-jZ-Ew4" secondAttribute="bottom" constant="2" id="kVw-yz-6KU"/>
                                     <constraint firstItem="jNx-ec-hia" firstAttribute="leading" secondItem="Lgu-dx-6eJ" secondAttribute="trailing" constant="2" id="nYh-vu-Smx"/>
                                     <constraint firstItem="Lgu-dx-6eJ" firstAttribute="top" secondItem="WrT-Zk-IqS" secondAttribute="bottom" constant="2" id="ncp-FI-fnP"/>
-                                    <constraint firstAttribute="height" constant="194" id="nql-bY-t2S"/>
+                                    <constraint firstAttribute="height" constant="222" id="nql-bY-t2S"/>
                                     <constraint firstItem="bFu-UV-Wgm" firstAttribute="top" secondItem="gNs-tt-3hb" secondAttribute="bottom" constant="2" id="o2r-yK-Eo1"/>
                                     <constraint firstItem="is4-Sf-KkQ" firstAttribute="top" secondItem="Zf8-8M-Orn" secondAttribute="bottom" constant="2" id="oRu-kS-5vf"/>
                                     <constraint firstItem="8J6-ZF-zAo" firstAttribute="top" secondItem="NLY-Qr-LgL" secondAttribute="top" constant="8" id="oir-Yl-kTj"/>
@@ -1085,7 +1086,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NLY-Qr-LgL" secondAttribute="trailing" id="1eJ-fk-GrK"/>
+                            <constraint firstAttribute="trailing" secondItem="NLY-Qr-LgL" secondAttribute="trailing" constant="17" id="1eJ-fk-GrK"/>
                             <constraint firstItem="BUW-9w-xcR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EEO-U7-Gck"/>
                             <constraint firstAttribute="trailing" secondItem="BUW-9w-xcR" secondAttribute="trailing" id="Iwb-hU-iVo"/>
                             <constraint firstItem="NLY-Qr-LgL" firstAttribute="top" secondItem="BUW-9w-xcR" secondAttribute="bottom" id="UOr-Cc-A1S"/>
@@ -1124,11 +1125,12 @@
                         <outlet property="E3" destination="nMb-d0-5bJ" id="wb0-Z0-j2T"/>
                         <outlet property="E4" destination="BiP-CH-exS" id="UzR-Dp-F2C"/>
                         <outlet property="E5" destination="3C5-VD-zun" id="fAz-Vo-cVP"/>
+                        <outlet property="submit" destination="8bC-Xf-vdC" id="ilU-BG-cYs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81.538461538461533" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="80.799999999999997" y="2.9556650246305418"/>
         </scene>
     </scenes>
     <resources>

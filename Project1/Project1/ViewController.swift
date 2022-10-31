@@ -53,12 +53,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var D5: UILabel!
     @IBOutlet weak var E5: UILabel!
     
+    //Buttons
+    
+    @IBOutlet var submit: UIView!
     
     
-    
+   
     
     
     var fullset = Array<UILabel>()
+    
+    var words = ["Hello","Omar"];
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,8 +114,13 @@ class ViewController: UIViewController {
         E.layer.borderColor = UIColor.darkGray.cgColor
 
         
+        
     }
 
-
+   
+    @IBAction func submit_word(_ sender: Any) {
+        
+    }
+    
 }
 
